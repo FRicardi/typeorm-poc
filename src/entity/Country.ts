@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Person } from "./Person";
 
 @Entity()
 export class Country {
@@ -14,4 +15,7 @@ export class Country {
     
     @Column({unique: true})
     acronym: string
+
+    @OneToMany(() => Person, (person) => person.country)
+    people: Person[]
 }
