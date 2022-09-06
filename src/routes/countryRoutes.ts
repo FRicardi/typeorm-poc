@@ -8,7 +8,7 @@ export const countryRoutes = [
         action: "all"
     }, {
         method: "get",
-        route: "/countries/:id",
+        route: "/countries/:acronym",
         controller: CountryController,
         action: "one"
     }, {
@@ -18,7 +18,7 @@ export const countryRoutes = [
         action: "save"
     }, {
         method: "delete",
-        route: "/countries/:id",
+        route: "/countries/:acronym",
         controller: CountryController,
         action: "remove"
     },

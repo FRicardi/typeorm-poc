@@ -11,4 +11,7 @@ export class Country {
 
     @Column()
     capital: string
+    
+    @Column({unique: true})
+    acronym: string
 }

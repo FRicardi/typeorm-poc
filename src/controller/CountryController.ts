@@ -11,7 +11,7 @@ export class CountryController {
     }
 
     async one(request: Request, response: Response, next: NextFunction) {
-        return this.countryRepository.findOneBy({id: request.params.id})
+        return this.countryRepository.findOneBy({acronym: request.params.acronym})
     }
 
     async save(request: Request, response: Response, next: NextFunction) {
@@ -19,7 +19,7 @@ export class CountryController {
     }
 
     async remove(request: Request, response: Response, next: NextFunction) {
-        let countryToRemove = await this.countryRepository.findOneBy({ id: request.params.id })
+        let countryToRemove = await this.countryRepository.findOneBy({ acronym: request.params.acronym })
         await this.countryRepository.remove(countryToRemove)
         return countryToRemove;
     }
