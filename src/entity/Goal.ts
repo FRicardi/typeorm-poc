@@ -1,17 +1,18 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Country } from "./Country";
+import { Match } from "./Match";
 
 @Entity()
-export class Person {
+export class Goal {
   @PrimaryGeneratedColumn("uuid")
   id: number;
 
-  @ManyToOne(() => Country, (country) => country.people)
-  country: Country;
+  @ManyToOne(() => Match)
+  math: Match;
 
   @Column()
   name: string;
 
   @Column()
-  birth: string;
+  minute: number;
 }

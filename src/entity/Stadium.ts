@@ -1,17 +1,21 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Country } from "./Country";
+import { WorldCup } from "./WorldCup";
 
 @Entity()
-export class Person {
+export class Stadium {
   @PrimaryGeneratedColumn("uuid")
   id: number;
 
-  @ManyToOne(() => Country, (country) => country.people)
-  country: Country;
+  @ManyToOne(() => WorldCup, (worldcup) => worldcup.stadiums)
+  worldCup: WorldCup;
 
   @Column()
   name: string;
 
   @Column()
-  birth: string;
+  capacity: number;
+
+  @Column()
+  city: string;
 }

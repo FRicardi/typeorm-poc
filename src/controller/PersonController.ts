@@ -12,12 +12,7 @@ export class PersonController {
   async one(request: Request, response: Response, next: NextFunction) {
     return this.personRepository.findOne({
       where: { id: request.params.id },
-      relations: {
-        country: {
-          acronym: true,
-          name: true,
-        },
-      },
+      relations: ["country"],
     });
   }
 
