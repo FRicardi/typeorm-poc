@@ -3,16 +3,15 @@ import { Country } from "./Country";
 
 @Entity()
 export class Person {
+  @PrimaryGeneratedColumn("uuid")
+  id: number;
 
-    @PrimaryGeneratedColumn("uuid")
-    id: number
- 
-    @Column()
-    name: string
+  @Column()
+  name: string;
 
-    @Column()
-    birth: string
-    
-    @ManyToOne(() => Country, (country) => country.people)
-    country: Country
+  @Column()
+  birth: string;
+
+  @ManyToOne(() => Country, (country) => country.people)
+  country: Country;
 }

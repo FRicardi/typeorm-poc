@@ -3,19 +3,18 @@ import { Person } from "./Person";
 
 @Entity()
 export class Country {
+  @PrimaryGeneratedColumn("uuid")
+  id: number;
 
-    @PrimaryGeneratedColumn("uuid")
-    id: number
- 
-    @Column()
-    name: string
+  @Column()
+  name: string;
 
-    @Column()
-    capital: string
-    
-    @Column({unique: true})
-    acronym: string
+  @Column()
+  capital: string;
 
-    @OneToMany(() => Person, (person) => person.country)
-    people: Person[]
+  @Column({ unique: true })
+  acronym: string;
+
+  @OneToMany(() => Person, (person) => person.country)
+  people: Person[];
 }
