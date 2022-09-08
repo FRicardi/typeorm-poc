@@ -3,6 +3,7 @@ import {
   Entity,
   ManyToOne,
   OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { Country } from "./Country";
@@ -16,9 +17,6 @@ export class Match {
   @PrimaryGeneratedColumn("uuid")
   id: number;
 
-  @ManyToOne(() => Round, (round) => round.mathes)
-  round: Round;
-
   @Column()
   date: Date;
 
@@ -26,26 +24,29 @@ export class Match {
   time: Date;
 
   @Column()
-  country1: Country;
-
-  @Column()
-  country2: Country;
-
-  @Column()
   score1: number;
 
   @Column()
   score2: number;
+
+  @ManyToOne(() => Round, (round) => round.matches)
+  round: Round;
+
+  @ManyToOne(() => Group)
+  group: Group;
+
+  @ManyToOne(() => Stadium)
+  stadium: Stadium;
+
+  @ManyToOne(() => Country)
+  country1: Country;
+
+  @ManyToOne(() => Country)
+  country2: Country;
 
   @OneToMany(() => Goal, (goal) => goal.math)
   goals1: Goal[];
 
   @OneToMany(() => Goal, (goal) => goal.math)
   goals2: Goal[];
-
-  @Column()
-  group: Group;
-
-  @Column()
-  stadium: Stadium;
 }

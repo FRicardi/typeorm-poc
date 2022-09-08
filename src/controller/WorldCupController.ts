@@ -1,18 +1,20 @@
 import { NextFunction, Request, Response } from "express";
 import { AppDataSource } from "../data-source";
-import { Person } from "../entity";
+import { WorldCup } from "../entity";
 
-export class PersonController {
-  private personRepository = AppDataSource.getRepository(Person);
+export class WorldCupController {
+  private personRepository = AppDataSource.getRepository(WorldCup);
 
   async all(request: Request, response: Response, next: NextFunction) {
-    return this.personRepository.find({ relations: ["country"] });
+    return this.personRepository.find({
+      relations: ["countries", "groups", "stadiums", "rounds"],
+    });
   }
 
   async one(request: Request, response: Response, next: NextFunction) {
     return this.personRepository.findOne({
       where: { id: request.params.id },
-      relations: ["country"],
+      relations: ["countries", "groups", "stadiums", "rounds"],
     });
   }
 
@@ -26,15 +28,5 @@ export class PersonController {
     });
     await this.personRepository.remove(personToRemove);
     return personToRemove;
-  }
-
-  async allByCountryAcronym(
-    request: Request,
-    response: Response,
-    next: NextFunction
-  ) {
-    return this.personRepository.findBy({
-      country: { acronym: request.params.id },
-    });
   }
 }

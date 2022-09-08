@@ -13,12 +13,12 @@ export class Round {
   @PrimaryGeneratedColumn("uuid")
   id: number;
 
-  @ManyToOne(() => WorldCup, (worldcup) => worldcup.rounds)
-  worldCup: WorldCup;
-
   @Column()
   name: string;
 
+  @ManyToOne(() => WorldCup, (worldCup) => worldCup.rounds)
+  worldCup: WorldCup;
+
   @OneToMany(() => Match, (match) => match.round)
-  mathes: Match[];
+  matches: Match[];
 }

@@ -7,9 +7,6 @@ export class Stadium {
   @PrimaryGeneratedColumn("uuid")
   id: number;
 
-  @ManyToOne(() => WorldCup, (worldcup) => worldcup.stadiums)
-  worldCup: WorldCup;
-
   @Column()
   name: string;
 
@@ -18,4 +15,7 @@ export class Stadium {
 
   @Column()
   city: string;
+
+  @ManyToOne(() => WorldCup, (worldCup) => worldCup.stadiums)
+  worldCup: WorldCup;
 }

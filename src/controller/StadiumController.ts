@@ -1,18 +1,17 @@
 import { NextFunction, Request, Response } from "express";
 import { AppDataSource } from "../data-source";
-import { Person } from "../entity";
+import { Stadium } from "../entity";
 
-export class PersonController {
-  private personRepository = AppDataSource.getRepository(Person);
+export class StadiumController {
+  private personRepository = AppDataSource.getRepository(Stadium);
 
   async all(request: Request, response: Response, next: NextFunction) {
-    return this.personRepository.find({ relations: ["country"] });
+    return this.personRepository.find();
   }
 
   async one(request: Request, response: Response, next: NextFunction) {
     return this.personRepository.findOne({
       where: { id: request.params.id },
-      relations: ["country"],
     });
   }
 
@@ -28,13 +27,13 @@ export class PersonController {
     return personToRemove;
   }
 
-  async allByCountryAcronym(
+  async allByWorldCup(
     request: Request,
     response: Response,
     next: NextFunction
   ) {
     return this.personRepository.findBy({
-      country: { acronym: request.params.id },
+      worldCup: { id: request.params.id },
     });
   }
 }

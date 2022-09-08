@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-import { Country } from "../entity/Country";
 import { AppDataSource } from "../data-source";
+import { Country } from "../entity";
 
 export class CountryController {
   private countryRepository = AppDataSource.getRepository(Country);

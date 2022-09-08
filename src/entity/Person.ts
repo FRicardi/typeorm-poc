@@ -6,12 +6,12 @@ export class Person {
   @PrimaryGeneratedColumn("uuid")
   id: number;
 
-  @ManyToOne(() => Country, (country) => country.people)
-  country: Country;
-
   @Column()
   name: string;
 
   @Column()
   birth: string;
+
+  @ManyToOne(() => Country, (country) => country.people)
+  country: Country;
 }

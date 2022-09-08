@@ -8,17 +8,17 @@ export class Country {
   @PrimaryColumn()
   acronym: string;
 
-  @ManyToOne(() => Group, (group) => group.countries)
-  group: Group;
-
-  @ManyToOne(() => WorldCup, (worldcup) => worldcup.countries)
-  worldCup: WorldCup;
-
   @Column()
   name: string;
 
   @Column()
   continent: string;
+
+  @ManyToOne(() => WorldCup, (worldCup) => worldCup.countries)
+  worldCup: WorldCup;
+
+  @ManyToOne(() => Group, (group) => group.countries)
+  group: Group;
 
   @OneToMany(() => Person, (person) => person.country)
   people: Person[];
