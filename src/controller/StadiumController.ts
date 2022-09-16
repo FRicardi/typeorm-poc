@@ -3,27 +3,27 @@ import { AppDataSource } from "../data-source";
 import { Stadium } from "../entity";
 
 export class StadiumController {
-  private personRepository = AppDataSource.getRepository(Stadium);
+  private stadiumRepository = AppDataSource.getRepository(Stadium);
 
   async all(request: Request, response: Response, next: NextFunction) {
-    return this.personRepository.find();
+    return this.stadiumRepository.find();
   }
 
   async one(request: Request, response: Response, next: NextFunction) {
-    return this.personRepository.findOne({
+    return this.stadiumRepository.findOne({
       where: { id: request.params.id },
     });
   }
 
   async save(request: Request, response: Response, next: NextFunction) {
-    return this.personRepository.save(request.body);
+    return this.stadiumRepository.save(request.body);
   }
 
   async remove(request: Request, response: Response, next: NextFunction) {
-    let personToRemove = await this.personRepository.findOneBy({
+    let personToRemove = await this.stadiumRepository.findOneBy({
       id: request.params.id,
     });
-    await this.personRepository.remove(personToRemove);
+    await this.stadiumRepository.remove(personToRemove);
     return personToRemove;
   }
 
@@ -32,7 +32,7 @@ export class StadiumController {
     response: Response,
     next: NextFunction
   ) {
-    return this.personRepository.findBy({
+    return this.stadiumRepository.findBy({
       worldCup: { id: request.params.id },
     });
   }

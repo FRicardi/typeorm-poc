@@ -3,30 +3,30 @@ import { AppDataSource } from "../data-source";
 import { WorldCup } from "../entity";
 
 export class WorldCupController {
-  private personRepository = AppDataSource.getRepository(WorldCup);
+  private worldCupRepository = AppDataSource.getRepository(WorldCup);
 
   async all(request: Request, response: Response, next: NextFunction) {
-    return this.personRepository.find({
+    return this.worldCupRepository.find({
       relations: ["countries", "groups", "stadiums", "rounds"],
     });
   }
 
   async one(request: Request, response: Response, next: NextFunction) {
-    return this.personRepository.findOne({
+    return this.worldCupRepository.findOne({
       where: { id: request.params.id },
       relations: ["countries", "groups", "stadiums", "rounds"],
     });
   }
 
   async save(request: Request, response: Response, next: NextFunction) {
-    return this.personRepository.save(request.body);
+    return this.worldCupRepository.save(request.body);
   }
 
   async remove(request: Request, response: Response, next: NextFunction) {
-    let personToRemove = await this.personRepository.findOneBy({
+    let personToRemove = await this.worldCupRepository.findOneBy({
       id: request.params.id,
     });
-    await this.personRepository.remove(personToRemove);
+    await this.worldCupRepository.remove(personToRemove);
     return personToRemove;
   }
 }
