@@ -11,11 +11,15 @@ import { Goal } from "./Goal";
 import { Group } from "./Group";
 import { Round } from "./Round";
 import { Stadium } from "./Stadium";
+import { WorldCup } from "./WorldCup";
 
 @Entity()
 export class Match {
   @PrimaryGeneratedColumn("uuid")
   id: number;
+
+  @Column()
+  matchNum: number;
 
   @Column()
   date: Date;
@@ -28,6 +32,24 @@ export class Match {
 
   @Column()
   score2: number;
+  
+  @Column({nullable: true})
+  score1i: number;
+
+  @Column({nullable: true})
+  score2i: number;
+  
+  @Column({nullable: true})
+  score1p: number;
+
+  @Column({nullable: true})
+  score2p: number;
+
+  @Column({nullable: true})
+  score1et: number;
+
+  @Column({nullable: true})
+  score2et: number;
 
   @ManyToOne(() => Round, (round) => round.matches)
   round: Round;
