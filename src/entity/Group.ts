@@ -1,6 +1,7 @@
 import {
   Column,
   Entity,
+  ManyToMany,
   ManyToOne,
   OneToMany,
   PrimaryColumn,
@@ -20,6 +21,6 @@ export class Group {
   @ManyToOne(() => WorldCup, (worldCup) => worldCup.groups)
   worldCup: WorldCup;
 
-  @OneToMany(() => Country, (country) => country.group)
+  @ManyToMany(() => Country, (country) => country.group)
   countries: Country[];
 }

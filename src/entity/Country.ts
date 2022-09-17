@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
 import { Group } from "./Group";
 import { Person } from "./Person";
 import { WorldCup } from "./WorldCup";
@@ -17,7 +17,10 @@ export class Country {
   @ManyToOne(() => WorldCup, (worldCup) => worldCup.countries)
   worldCup: WorldCup;
 
-  @ManyToOne(() => Group, (group) => group.countries)
+  @ManyToMany(() => Group, (group) => group.countries, { cascade: true })
+  @JoinTable({
+    joinColumn: { referencedColumnName: "acronym" }
+  })
   group: Group;
 
   @OneToMany(() => Person, (person) => person.country)

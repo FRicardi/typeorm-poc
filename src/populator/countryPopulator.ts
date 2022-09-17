@@ -7,18 +7,18 @@ export default async function populateCountry() {
 
     const countryRepository = AppDataSource.getRepository(Country);
 
-    teams.forEach(async (team) => {
-        const existingCountry = await countryRepository.findOneBy({acronym: team.code})
+    for (var i = 0; i < teams.length; i++) {
+        const existingCountry = await countryRepository.findOneBy({acronym: teams[i].code})
         if (!existingCountry) {
-            console.log(`Inserting ${team.code}...`)
+            console.log(`Inserting ${teams[i].code}...`)
             await countryRepository.save({
-                acronym: team.code,
-                name: team.name,
-                continent: team.continent
+                acronym: teams[i].code,
+                name: teams[i].name,
+                continent: teams[i].continent
             })
         } else {
-            console.log(`Country ${team.code} already inserted`)
+            console.log(`Country ${teams[i].code} already inserted`)
         }
-    })
+    }
     
 }
