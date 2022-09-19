@@ -1,12 +1,4 @@
-import {
-  Column,
-  Entity,
-  ManyToOne,
-  OneToMany,
-  PrimaryColumn,
-  PrimaryGeneratedColumn,
-} from "typeorm";
-import { Country } from "./Country";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Group } from "./Group";
 import { Round } from "./Round";
 import { Stadium } from "./Stadium";
@@ -18,9 +10,6 @@ export class WorldCup {
 
   @Column()
   name: string;
-
-  @OneToMany(() => Country, (country) => country.worldCup)
-  countries: Country[];
 
   @OneToMany(() => Group, (group) => group.worldCup)
   groups: Group[];

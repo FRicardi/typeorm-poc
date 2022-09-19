@@ -7,14 +7,26 @@ export class WorldCupController {
 
   async all(request: Request, response: Response, next: NextFunction) {
     return this.worldCupRepository.find({
-      relations: ["countries", "groups", "stadiums", "rounds"],
+      relations: {
+        groups: {
+          countries: true,
+        },
+        stadiums: true,
+        rounds: true,
+      },
     });
   }
 
   async one(request: Request, response: Response, next: NextFunction) {
     return this.worldCupRepository.findOne({
       where: { id: request.params.id },
-      relations: ["countries", "groups", "stadiums", "rounds"],
+      relations: {
+        groups: {
+          countries: true,
+        },
+        stadiums: true,
+        rounds: true,
+      },
     });
   }
 

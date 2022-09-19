@@ -11,7 +11,6 @@ import { Goal } from "./Goal";
 import { Group } from "./Group";
 import { Round } from "./Round";
 import { Stadium } from "./Stadium";
-import { WorldCup } from "./WorldCup";
 
 @Entity()
 export class Match {

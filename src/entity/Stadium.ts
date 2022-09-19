@@ -1,5 +1,4 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { Country } from "./Country";
 import { WorldCup } from "./WorldCup";
 
 @Entity()

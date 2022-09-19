@@ -3,8 +3,6 @@ import {
   Entity,
   ManyToMany,
   ManyToOne,
-  OneToMany,
-  PrimaryColumn,
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { Country } from "./Country";

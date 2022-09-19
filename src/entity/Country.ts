@@ -4,7 +4,6 @@ import {
   JoinColumn,
   JoinTable,
   ManyToMany,
-  ManyToOne,
   OneToMany,
   OneToOne,
   PrimaryColumn,
@@ -12,7 +11,6 @@ import {
 import { Federation } from "./Federation";
 import { Group } from "./Group";
 import { Person } from "./Person";
-import { WorldCup } from "./WorldCup";
 
 @Entity()
 export class Country {
@@ -24,9 +22,6 @@ export class Country {
 
   @Column()
   continent: string;
-
-  @ManyToOne(() => WorldCup, (worldCup) => worldCup.countries)
-  worldCup: WorldCup;
 
   @ManyToMany(() => Group, (group) => group.countries, { cascade: true })
   @JoinTable({
