@@ -1,4 +1,5 @@
-import { Column, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryColumn } from "typeorm";
+import { Federation } from "./Federation";
 import { Group } from "./Group";
 import { Person } from "./Person";
 import { WorldCup } from "./WorldCup";
@@ -25,4 +26,8 @@ export class Country {
 
   @OneToMany(() => Person, (person) => person.country)
   people: Person[];
+
+  @OneToOne(() => Federation)
+  @JoinColumn()
+  federation: Federation
 }
