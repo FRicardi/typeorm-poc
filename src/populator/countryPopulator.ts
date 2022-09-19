@@ -19,7 +19,7 @@ export default async function populateCountry() {
                     name: country.assoc.name,
                 })
             }
-            const countryModel = await countryRepository.save({
+            await countryRepository.save({
                 acronym: teams[i].code,
                 name: teams[i].name,
                 continent: teams[i].continent,
