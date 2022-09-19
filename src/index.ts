@@ -32,7 +32,13 @@ AppDataSource.initialize()
     });
     app.listen(3000);
     console.log(
-      "Express server has started on port 3000. Open http://localhost:3000/countries to see results"
+      `Express server has started on port 3000. To see results, open:
+> http://localhost:3000/countries
+> http://localhost:3000/groups
+> http://localhost:3000/people
+> http://localhost:3000/rounds
+> http://localhost:3000/stadiums
+> http://localhost:3000/worldCups`
     );
   })
   .catch((error) => console.log(error));
