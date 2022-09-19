@@ -25,4 +25,10 @@ export const countryRoutes = [
     controller: CountryController,
     action: "remove",
   },
+  {
+    method: "get",
+    route: "/countries/cup-participation/:acronym",
+    controller: CountryController,
+    action: "cupParticipations",
+  },
 ];

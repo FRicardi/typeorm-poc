@@ -3,7 +3,6 @@ import * as bodyParser from "body-parser";
 import { Request, Response } from "express";
 import { AppDataSource } from "./data-source";
 import { Routes } from "./routes";
-import populate from "./populator/populate";
 
 AppDataSource.initialize()
   .then(async () => {
@@ -31,7 +30,6 @@ AppDataSource.initialize()
         }
       );
     });
-    populate();
     app.listen(3000);
     console.log(
       "Express server has started on port 3000. Open http://localhost:3000/countries to see results"

@@ -1,3 +1,4 @@
+import { AppDataSource } from "../data-source";
 import populateCountry from "./countryPopulator";
 import populateGroup from "./groupPopulator";
 import populateMatches from "./matchesPopulator";
@@ -11,3 +12,9 @@ export default async function populate() {
     await populateStadiums();
     await populateMatches();
 }
+
+AppDataSource.initialize()
+    .then(async () => {
+        populate();
+    })
+    .catch((error) => console.log(error));
