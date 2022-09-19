@@ -1,4 +1,14 @@
-import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  JoinTable,
+  ManyToMany,
+  ManyToOne,
+  OneToMany,
+  OneToOne,
+  PrimaryColumn,
+} from "typeorm";
 import { Federation } from "./Federation";
 import { Group } from "./Group";
 import { Person } from "./Person";
@@ -20,7 +30,7 @@ export class Country {
 
   @ManyToMany(() => Group, (group) => group.countries, { cascade: true })
   @JoinTable({
-    joinColumn: { referencedColumnName: "acronym" }
+    joinColumn: { referencedColumnName: "acronym" },
   })
   group: Group;
 
@@ -29,5 +39,5 @@ export class Country {
 
   @OneToOne(() => Federation)
   @JoinColumn()
-  federation: Federation
+  federation: Federation;
 }

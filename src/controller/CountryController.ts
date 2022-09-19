@@ -7,13 +7,16 @@ export class CountryController {
   private worldCupRepository = AppDataSource.getRepository(WorldCup);
 
   async all(request: Request, response: Response, next: NextFunction) {
-    return this.countryRepository.find({relations: ["federation"]});
+    return this.countryRepository.find({ relations: ["federation"] });
   }
 
   async one(request: Request, response: Response, next: NextFunction) {
-    return this.countryRepository.findOne({where: {
-      acronym: request.params.acronym,
-    }, relations: ["federation"]});
+    return this.countryRepository.findOne({
+      where: {
+        acronym: request.params.acronym,
+      },
+      relations: ["federation"],
+    });
   }
 
   async save(request: Request, response: Response, next: NextFunction) {
@@ -40,12 +43,12 @@ export class CountryController {
     return this.worldCupRepository.find({
       where: {
         groups: {
-          countries: country
-        }
+          countries: country,
+        },
       },
       order: {
-        name: "ASC"
-      }
-    })
+        name: "ASC",
+      },
+    });
   }
 }

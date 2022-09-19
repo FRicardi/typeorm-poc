@@ -6,15 +6,15 @@ import populateStadiums from "./stadiumPopulator";
 import populateWorldCup from "./worldCupPopulator";
 
 export default async function populate() {
-    await populateWorldCup();
-    await populateCountry();
-    await populateGroup();
-    await populateStadiums();
-    await populateMatches();
+  await populateWorldCup();
+  await populateCountry();
+  await populateGroup();
+  await populateStadiums();
+  await populateMatches();
 }
 
 AppDataSource.initialize()
-    .then(async () => {
-        populate();
-    })
-    .catch((error) => console.log(error));
+  .then(async () => {
+    populate();
+  })
+  .catch((error) => console.log(error));

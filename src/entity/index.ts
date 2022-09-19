@@ -6,4 +6,4 @@ export * from "./Person";
 export * from "./Round";
 export * from "./Stadium";
 export * from "./WorldCup";
-export * from "./Federation"
+export * from "./Federation";

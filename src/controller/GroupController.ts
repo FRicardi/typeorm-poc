@@ -21,11 +21,11 @@ export class GroupController {
   }
 
   async remove(request: Request, response: Response, next: NextFunction) {
-    let personToRemove = await this.groupRepository.findOneBy({
+    let groupToRemove = await this.groupRepository.findOneBy({
       id: request.params.id,
     });
-    await this.groupRepository.remove(personToRemove);
-    return personToRemove;
+    await this.groupRepository.remove(groupToRemove);
+    return groupToRemove;
   }
 
   async allByWorldCup(

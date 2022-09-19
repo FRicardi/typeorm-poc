@@ -21,11 +21,11 @@ export class RoundController {
   }
 
   async remove(request: Request, response: Response, next: NextFunction) {
-    let personToRemove = await this.roundRepository.findOneBy({
+    let roundToRemove = await this.roundRepository.findOneBy({
       id: request.params.id,
     });
-    await this.roundRepository.remove(personToRemove);
-    return personToRemove;
+    await this.roundRepository.remove(roundToRemove);
+    return roundToRemove;
   }
 
   async allByWorldCup(

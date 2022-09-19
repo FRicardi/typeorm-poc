@@ -20,11 +20,11 @@ export class StadiumController {
   }
 
   async remove(request: Request, response: Response, next: NextFunction) {
-    let personToRemove = await this.stadiumRepository.findOneBy({
+    let stadiumToRemove = await this.stadiumRepository.findOneBy({
       id: request.params.id,
     });
-    await this.stadiumRepository.remove(personToRemove);
-    return personToRemove;
+    await this.stadiumRepository.remove(stadiumToRemove);
+    return stadiumToRemove;
   }
 
   async allByWorldCup(

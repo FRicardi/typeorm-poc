@@ -23,10 +23,10 @@ export class WorldCupController {
   }
 
   async remove(request: Request, response: Response, next: NextFunction) {
-    let personToRemove = await this.worldCupRepository.findOneBy({
+    let worldCupToRemove = await this.worldCupRepository.findOneBy({
       id: request.params.id,
     });
-    await this.worldCupRepository.remove(personToRemove);
-    return personToRemove;
+    await this.worldCupRepository.remove(worldCupToRemove);
+    return worldCupToRemove;
   }
 }

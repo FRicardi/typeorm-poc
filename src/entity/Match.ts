@@ -32,23 +32,23 @@ export class Match {
 
   @Column()
   score2: number;
-  
-  @Column({nullable: true})
+
+  @Column({ nullable: true })
   score1i: number;
 
-  @Column({nullable: true})
+  @Column({ nullable: true })
   score2i: number;
-  
-  @Column({nullable: true})
+
+  @Column({ nullable: true })
   score1p: number;
 
-  @Column({nullable: true})
+  @Column({ nullable: true })
   score2p: number;
 
-  @Column({nullable: true})
+  @Column({ nullable: true })
   score1et: number;
 
-  @Column({nullable: true})
+  @Column({ nullable: true })
   score2et: number;
 
   @ManyToOne(() => Round, (round) => round.matches)
